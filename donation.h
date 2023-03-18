@@ -1,16 +1,17 @@
 #ifndef __DONATION_H__
 #define __DONATION_H__
+
 #include "csv.h"
 
-typedef struct {    
-    int day; 
+typedef struct {
+    int day;
     int month;
     int year;
 } tDate;
 
 
 // Parse a tDate from string information
-void date_parse(tDate* date, const char* text);
+void date_parse(tDate *date, const char *text);
 
 // Compare two tDate structures and return true if they contain the same value or false otherwise.
 bool date_equals(tDate date1, tDate date2);
@@ -33,36 +34,34 @@ bool date_equals(tDate date1, tDate date2);
 
 typedef struct {
     tDate date;
-    char document[50];
-    char ngo[3];
-    char projectCode[50];
+    char document[MAX_DOC_ID];
+    char ngo[MAX_NGO_CODE];
+    char projectCode[MAX_PROJECT_CODE];
     double amount;
-}tDonation;
+} tDonation;
 
-typedef struct { //ordenades pel codi del projecte
+typedef struct { //ordered by project code
     tDonation donationsTable[MAX_DONATIONS];
     int n;
-}tDonationData;
+} tDonationData;
 
 //////////////////////////////////
 // Ex 2: Define your methods here ....
 
-
-// Initialize the donations data 
-
+// Initialize the donations data
 void donationData_init(tDonationData *data);
 
 // Get the number of donations
-int donationData_len (tDonationData data);
+int donationData_len(tDonationData data);
 
 // Parse input from CSVEntry
-void donation_parse (tDonation* donation, tCSVEntry entry);
+void donation_parse(tDonation *donation, tCSVEntry entry);
 
 // Add a new donation
-void donationData_add (tDonationData* data, tDonation donation);
+void donationData_add(tDonationData *data, tDonation donation);
 
 // Get a donation
-void donationData_get (tDonationData data, int index, char* buffer);
+void donationData_get(tDonationData data, int index, char *buffer);
 
 // Remove a donation
 void donationData_del(tDonationData *data, tDate date, char projectCode[], char document[]);
@@ -70,7 +69,6 @@ void donationData_del(tDonationData *data, tDate date, char projectCode[], char 
 
 ////////////////////////////////////////////
 // Auxiliary Methods
-
 
 ////////////////////////////////////////////
 
