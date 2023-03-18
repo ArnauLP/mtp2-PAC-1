@@ -121,5 +121,3 @@ void donationData_del(tDonationData *data, tDate date, char projectCode[], char 
         data->n--;
     }
 }
-
-
